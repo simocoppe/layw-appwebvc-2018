@@ -12,6 +12,7 @@
                 <li id="tab-item-goals"> Goals </li>
                 <li id="tab-item-activities"> Activities </li>
                 <li id="tab-item-personal-data"> Personal data </li>
+                <li id="tab-item-personal-data"> Images </li>
             </ul>
             <div class="content-grid">
                 @{ await Html.RenderPartialAsync("Components/PatientDiet/Default", Model.Id); }
@@ -23,10 +24,13 @@
                 @{ await Html.RenderPartialAsync("Components/PatientGoals/Default", Model.Id); }
             </div>
             <div class="chart-box">
-				@await Component.InvokeAsync("PatientActivities", new { currentPatient = Model })
-			</div>
+                @await Component.InvokeAsync("PatientActivities", new { currentPatient = Model })
+            </div>
             <div>
                 @await Component.InvokeAsync("PatientPersonalData", new { currentPatient = Model })
+            </div>
+            <div>
+                @{ await Html.RenderPartialAsync("Components/PatientImages/Images"); }
             </div>
         </div>
     </div>
@@ -188,4 +192,3 @@
     $("#patient-menu-treeview").css("display","block");
     $("#patient-@Model.Name.Replace(" ", "_")").addClass("active");
 </script>
-
